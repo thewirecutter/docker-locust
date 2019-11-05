@@ -13,3 +13,6 @@ reports/*
 
 # Sample load test script
 simple.py
+
+# OSX 
+.DS_Store
