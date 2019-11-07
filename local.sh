@@ -97,11 +97,11 @@ ________________________________________________________________________________
 _________________________________________________________________________________
 EOF
     if [ -z $IMAGE ]; then
-        IMAGE="registry.opensource.zalan.do/tip/docker-locust"
+        IMAGE="747381473371.dkr.ecr.us-east-1.amazonaws.com/wirecutter/docker-locust:latest"
     fi
 
     [ -z "$TARGET" ] && read -p "Target url: " TARGET
-    [ -z "$LOCUST_FILE" ] && read -p "Where load test script is stored (e.g. https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple.py): " LOCUST_FILE
+    [ -z "$LOCUST_FILE" ] && read -p "Where load test script is stored (e.g. https://raw.githubusercontent.com/wirecutter/docker-locust/master/example/simple.py): " LOCUST_FILE
     [ -z "$SLAVES" ] && read -p "Number of slave(s): " SLAVES
     [ -z "$MODE" ] && read -p "Run type [automatic/manual]: " MODE
 
