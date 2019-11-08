@@ -142,7 +142,7 @@ EOF
         echo "----------------------------------------------"
         COMPOSE_FILE=docker-compose.yaml
         if [ ! -f $COMPOSE_FILE ]; then
-            curl -o $COMPOSE_FILE https://raw.githubusercontent.com/wirecutter/docker-locust/master/docker-compose.yaml
+            curl -o $COMPOSE_FILE https://raw.githubusercontent.com/thewirecutter/docker-locust/master/docker-compose.yaml
             echo -e "Download completed! \xE2\x9C\x94"
         else
             echo -e 'File is found, download is not needed! \xE2\x9C\x94'

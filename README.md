@@ -1,10 +1,6 @@
 Docker-Locust
 =============
 
-[![Build Status](https://travis-ci.org/zalando-incubator/docker-locust.svg?branch=master)](https://travis-ci.org/zalando-incubator/docker-locust)
-[![codecov](https://codecov.io/gh/zalando-incubator/docker-locust/branch/master/graph/badge.svg)](https://codecov.io/gh/zalando-incubator/docker-locust)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a235d56b27647f9b73982933c00314a)](https://www.codacy.com/app/butomo1989/docker-locust?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zalando-incubator/docker-locust&amp;utm_campaign=Badge_Grade)
-
 The purpose of this project is to provide a ready and easy-to-use version of [locust.io] which also contains additional/useful features that are required.
 
 Architecture
@@ -47,14 +43,14 @@ Getting Started
 docker-locust will be run as **standalone** version by default. Standalone version is for users who has only 1 single machine.
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/local.sh) deploy
+bash <(curl -s https://raw.githubusercontent.com/thewirecutter/docker-locust/master/local.sh) deploy
 ```
 
 You will be prompted for certains inputs required (You can use [our example] in github as load test script).
 
 ```
 Target url: https://targeturl.com
-Where load test script is stored: https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple.py
+Where load test script is stored: https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/simple.py
 Number of slave(s): 4
 Run type [automatic/manual]: manual
 ```
@@ -62,13 +58,14 @@ Run type [automatic/manual]: manual
 *All of it can be simplify in one line:*
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/local.sh) deploy --target=https://targeturl.com --locust-file=https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple.py --slaves=4 --mode=manual
+bash <(curl -s https://raw.githubusercontent.com/thewirecutter/docker-locust/master/local.sh) deploy --target=https://targeturl.com --locust-file=https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/simple.py --slaves=4 --mode=manual
 ```
 
 It is also possible to run with normal docker command:
 
 ```bash
-docker run -i --rm -v $PWD/reports:/opt/reports -v ~/.aws:/root/.aws -v $PWD/:/opt/script -v $PWD/credentials:/meta/credentials -p 8089:8089 -e ROLE=standalone -e TARGET_HOST=https://targeturl.com -e LOCUST_FILE=https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple.py -e SLAVE_MUL=4 -e AUTOMATIC=False registry.opensource.zalan.do/tip/docker-locust
+docker run -i --rm -v $PWD/reports:/opt/reports -v ~/.aws:/root/.aws -v $PWD/:/opt/script -v $PWD/credentials:/meta/credentials -p 8089:8089 -e ROLE=standalone -e TARGET_HOST=https://targeturl.com -e LOCUST_FILE=https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/simple.py -e SLAVE_MUL=4 -e AUTOMATIC=False 747381473371.dkr.ecr.us-east-1.amazonaws.com/wirecutter/docker-locust:latest
+
 ```
 
 ### Multiple machines
@@ -79,15 +76,15 @@ docker-locust can be run in multiple docker-containers. It is useful for users w
 Run the application with the command:
 
 ```bash
-DOCKER_COMPOSE=true bash <(curl -s https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/local.sh) deploy
+DOCKER_COMPOSE=true bash <(curl -s https://raw.githubusercontent.com/thewirecutter/docker-locust/master/local.sh) deploy
 ```
 
 Read multiple files
 -------------------
-docker-locust has the ability to read multiple files from s3 or any http/https, e.g. [1 file is the load test file / python file](https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple_post.py) and [1 other file is json file](https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/payloads.json) where payloads are stored. Sample command:
+docker-locust has the ability to read multiple files from s3 or any http/https, e.g. [1 file is the load test file / python file](https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/simple_post.py) and [1 other file is json file](https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/payloads.json) where payloads are stored. Sample command:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/local.sh) deploy --target=https://targeturl.com --locust-file=https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple_post.py,https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/payloads.json --slaves=4 --mode=manual
+bash <(curl -s https://raw.githubusercontent.com/thewirecutter/docker-locust/master/local.sh) deploy --target=https://targeturl.com --locust-file=https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/simple_post.py,https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/payloads.json --slaves=4 --mode=manual
 ```
 
 Report Generation
@@ -124,7 +121,7 @@ docker-locust can be run automatically by using CI tool like jenkins.
 1. Put following command in "Execute shell" field:
 
 	```bash
-	curl -O https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/local.sh && DOCKER_COMPOSE=true bash local.sh deploy --target=https://targeturl.com --locust-file=https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple.py --slaves=4 --mode=automatic --users=100 --hatch-rate=5 --duration=30
+	curl -O https://raw.githubusercontent.com/thewirecutter/docker-locust/master/local.sh && DOCKER_COMPOSE=true bash local.sh deploy --target=https://targeturl.com --locust-file=https://raw.githubusercontent.com/thewirecutter/docker-locust/master/example/simple.py --slaves=4 --mode=automatic --users=100 --hatch-rate=5 --duration=30
 	```
 
 2. Install [html-publisher-plugin] in jenkins to display load test result. Example configuration in jenkins job:
@@ -213,7 +210,7 @@ See [Security]
 [our example]: <https://raw.githubusercontent.com/zalando-incubator/docker-locust/master/example/simple.py>
 [awscli]: <http://docs.aws.amazon.com/cli/latest/userguide/installing.html>
 [html-publisher-plugin]: <https://wiki.jenkins-ci.org/display/JENKINS/HTML+Publisher+Plugin>
-[this example]: <https://github.com/zalando-incubator/docker-locust/blob/master/example/simple.py#L4-L9>
+[this example]: <https://github.com/thewirecutter/docker-locust/blob/master/example/simple.py#L4-L9>
 [Download report]: <images/download_report.png> "Download report"
 [HTML-Publisher configuration]: <images/usage_html_publisher.png> "Example configuration of HTML Publisher in jenkins job"
 [hello-world]: <https://github.com/zalando-incubator/docker-locust/blob/master/flask-sample/app.py>
