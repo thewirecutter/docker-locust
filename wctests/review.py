@@ -13,68 +13,74 @@ class SimpleBehavior(TaskSet):
 
     @task(1)
     def index(self):
-        self.client.get('/')
+        self.client.request('get','/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(7)
     def air(self):
-        self.client.get('/best-air-purifier/')
+        self.client.request('get','/best-air-purifier/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(5)
     def robot(self):
-        self.client.get('/best-robot-vacuum/')
+        self.client.request('get','/best-robot-vacuum/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(3)
     def humidifier(self):
-        self.client.get('/the-best-humidifier/')
+        self.client.request('get','/the-best-humidifier/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
     
     @task(3)
     def bestnchead(self):
-        self.client.get('/best-noise-cancelling-headphones/')
+        self.client.request('get,','/best-noise-cancelling-headphones/',
+                            'header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(3)
     def washerdryer(self):
-        self.client.get('/the-best-washer-and-dryer/')
+        self.client.request('get','/the-best-washer-and-dryer/',
+                            'header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(2)
     def wohsc(self):
-        self.client.get('/best-wireless-outdoor-home-security-camera/')
+        self.client.request('get','/best-wireless-outdoor-home-security-camera/',
+                            'header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(2)
     def soundbar(self):
-        self.client.get('/best-soundbar/')
+        self.client.request('get','/best-soundbar/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(2)
     def slippers(self):
-        self.client.get('/best-slippers/')
+        self.client.request('get','/best-slippers/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(2)
     def towel(self):
-        self.client.get('/best-bath-towel/')
+        self.client.request('get','/best-bath-towel/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(2)
     def doorbell(self):
-        self.client.get('/best-smart-doorbell-camera/')
+        self.client.request('get','/best-smart-doorbell-camera/',
+                            'header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
     
     @task(2)
     def heater(self):
-        self.client.get('/best-space-heaters/')
+        self.client.request('get','/best-space-heaters/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(3)
     def earbuds(self):
-        self.client.get('/best-wireless-earbuds/')
+        self.client.request('get','/best-wireless-earbuds/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(2)
     def exheadphones(self):
-        self.client.get('/best-wireless-exercise-headphones/')
+        self.client.request('get','/best-wireless-exercise-headphones/',
+                            'header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
     @task(2)
     def carryon(self):
-        self.client.get('/best-carry-on-luggage/')
+        self.client.request('get','/best-carry-on-luggage/','header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
     
 
     @task(6)
     def inear(self):
-        self.client.get('/best-noise-cancelling-in-ear-headphones/')
+        self.client.request('get','/best-noise-cancelling-in-ear-headphones/',
+                            'header=X-Pagely-Skip-Ratelimit:W0gphagw0ctOursyosufNenIalAkfin0')
 
 
 class MyLocust(HttpLocust):
